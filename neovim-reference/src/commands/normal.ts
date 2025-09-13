@@ -1,15 +1,7 @@
-export interface NeovimCommand {
-  command: string;
-  description: string;
-  mode: "Normal" | "Insert" | "Visual" | "Cmdline";
-  category: "Navigation" | "Editing" | "Search" | "Windows" | "Files" | "Text Objects" | "Misc";
-  keywords?: string[]; // Дополнительные ключевые слова для поиска
-  example?: string;
-  related?: string[];
-}
+import type { NeovimCommand } from "../types";
 
-export const nvimCommands: NeovimCommand[] = [
-  // Basic Movement
+export const normalCommands: NeovimCommand[] = [
+  // MARK: Basic Movement
   {
     command: "h",
     description: "Move left",
@@ -47,7 +39,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["h", "j", "k"],
   },
   
-  // Word Movement
+  // MARK: Word Movement
   {
     command: "w",
     description: "Move to the beginning of the next word",
@@ -76,7 +68,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["w", "b", "E"],
   },
 
-  // Line Movement
+  // MARK: Line Movement
   {
     command: "0",
     description: "Move to the beginning of the line",
@@ -105,7 +97,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["0", "^", "g_"],
   },
 
-  // File Navigation
+  // MARK: File Navigation
   {
     command: "gg",
     description: "Move to the beginning of the file",
@@ -125,7 +117,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["gg", "1G"],
   },
 
-  // Editing Commands
+  // MARK: Editing
   {
     command: "i",
     description: "Enter Insert mode before the cursor",
@@ -163,7 +155,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["o", "i", "a"],
   },
   
-  // Deletion Commands
+  // MARK: Deletion
   {
     command: "x",
     description: "Delete character under cursor",
@@ -201,7 +193,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["D", "dd", "d0"],
   },
 
-  // Copy and Paste
+  // MARK:Copy and Paste
   {
     command: "yy",
     description: "Copy line",
@@ -230,7 +222,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["p", "yy", "dd"],
   },
 
-  // Visual Mode
+  // MARK: Visual
   {
     command: "v",
     description: "Enter Visual mode",
@@ -250,7 +242,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["v", "Ctrl-v"],
   },
 
-  // Search Commands
+  // MARK: Search
   {
     command: "/pattern",
     description: "Search forward",
@@ -287,84 +279,6 @@ export const nvimCommands: NeovimCommand[] = [
     example: "Press `N` to go to the previous search result.",
     related: ["n", "/", "?"],
   },
-
-  // Search and Replace
-  {
-    command: ":%s/old/new/g",
-    description: "Replace all occurrences of 'old' with 'new' in entire file",
-    mode: "Cmdline",
-    category: "Search",
-    keywords: ["substitute", "replace", "find", "global"],
-    example: "Type `:%s/foo/bar/g` to replace all 'foo' with 'bar' in the entire file.",
-    related: [":s/old/new/", ":%s/old/new/gc"],
-  },
-  {
-    command: ":s/old/new/",
-    description: "Replace first occurrence in current line",
-    mode: "Cmdline",
-    category: "Search",
-    keywords: ["substitute", "replace", "line"],
-    example: "Type `:s/foo/bar/` to replace the first 'foo' with 'bar' in the current line.",
-    related: [":%s/old/new/g", ":s/old/new/g"],
-  },
-
-  // File Operations
-  {
-    command: ":w",
-    description: "Save file",
-    mode: "Cmdline",
-    category: "Files",
-    keywords: ["save", "write"],
-    example: "Type `:w` to save the current file.",
-    related: [":w filename", ":wq", ":x"],
-  },
-  {
-    command: ":q",
-    description: "Quit Neovim",
-    mode: "Cmdline",
-    category: "Files",
-    keywords: ["quit", "exit"],
-    example: "Type `:q` to quit Neovim (if no unsaved changes).",
-    related: [":q!", ":wq", ":x"],
-  },
-  {
-    command: ":wq",
-    description: "Save and quit",
-    mode: "Cmdline",
-    category: "Files",
-    keywords: ["save", "quit", "exit"],
-    example: "Type `:wq` to save the file and quit Neovim.",
-    related: [":x", ":w", ":q"],
-  },
-  {
-    command: ":q!",
-    description: "Quit without saving changes",
-    mode: "Cmdline",
-    category: "Files",
-    keywords: ["quit", "force", "discard"],
-    example: "Type `:q!` to quit Neovim without saving changes.",
-    related: [":q", ":wq"],
-  },
-
-  // Window Management
-  {
-    command: ":split",
-    description: "Split window horizontally",
-    mode: "Cmdline",
-    category: "Windows",
-    keywords: ["split", "horizontal", "window"],
-    example: "Type `:split` to split the current window horizontally.",
-    related: [":vsplit", "Ctrl-w s", "Ctrl-w v"],
-  },
-  {
-    command: ":vsplit",
-    description: "Split window vertically",
-    mode: "Cmdline",
-    category: "Windows",
-    keywords: ["split", "vertical", "window"],
-    example: "Type `:vsplit` to split the current window vertically.",
-    related: [":split", "Ctrl-w v", "Ctrl-w s"],
-  },
   {
     command: "Ctrl-w w",
     description: "Switch between windows",
@@ -395,7 +309,7 @@ export const nvimCommands: NeovimCommand[] = [
     related: ["u", "."],
   },
 
-  // Miscellaneous
+  // MARK: Misc
   {
     command: ".",
     description: "Repeat last command",
@@ -404,14 +318,5 @@ export const nvimCommands: NeovimCommand[] = [
     keywords: ["repeat", "last", "command"],
     example: "Press `.` to repeat the last executed command.",
     related: ["u", "Ctrl-r"],
-  },
-  {
-    command: ":help",
-    description: "Open help",
-    mode: "Cmdline",
-    category: "Misc",
-    keywords: ["help", "documentation"],
-    example: "Type `:help` to open Neovim's built-in help.",
-    related: [":help command", ":h"],
   },
 ];

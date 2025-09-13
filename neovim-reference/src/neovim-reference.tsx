@@ -1,6 +1,7 @@
 import { Action, ActionPanel, Detail, Icon, List } from "@raycast/api";
 import { useState } from "react";
-import { NeovimCommand, nvimCommands } from "./commands";
+import { nvimCommands } from "./commands";
+import type { NeovimCommand } from "./types";
 
 function getModeIcon(mode: string): string {
   switch (mode) {
