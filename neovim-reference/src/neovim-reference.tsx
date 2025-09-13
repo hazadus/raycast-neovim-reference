@@ -1,8 +1,7 @@
-import { List, ActionPanel, Action, Detail, Icon } from "@raycast/api";
+import { Action, ActionPanel, Detail, Icon, List } from "@raycast/api";
 import { useState } from "react";
-import { nvimCommands, NeovimCommand } from "./commands";
+import { NeovimCommand, nvimCommands } from "./commands";
 
-// Функция для получения иконки в зависимости от режима
 function getModeIcon(mode: string): string {
   switch (mode) {
     case "Normal":
@@ -11,14 +10,13 @@ function getModeIcon(mode: string): string {
       return "🔵";
     case "Visual":
       return "🟡";
-    case "Command-line":
+    case "Cmdline":
       return "🔴";
     default:
       return "⚪";
   }
 }
 
-// Функция для получения цвета режима
 function getModeColor(mode: string): string {
   switch (mode) {
     case "Normal":
@@ -27,14 +25,13 @@ function getModeColor(mode: string): string {
       return "#0080FF";
     case "Visual":
       return "#FFD700";
-    case "Command-line":
+    case "Cmdline":
       return "#FF4500";
     default:
       return "#808080";
   }
 }
 
-// Функция для получения иконки категории
 function getCategoryIcon(category: string): string {
   switch (category) {
     case "Navigation":
@@ -49,14 +46,13 @@ function getCategoryIcon(category: string): string {
       return "📁";
     case "Text Objects":
       return "📝";
-    case "Miscellaneous":
+    case "Misc":
       return "⚙️";
     default:
       return "📋";
   }
 }
 
-// Получаем уникальные категории
 const uniqueCategories = Array.from(new Set(nvimCommands.map(cmd => cmd.category)));
 
 export default function Command() {
@@ -70,15 +66,15 @@ export default function Command() {
   return (
     <List 
       isShowingDetail 
-      searchBarPlaceholder="Искать команду Neovim..."
+      searchBarPlaceholder="Search Neovim command..."
       navigationTitle="Neovim Reference"
       searchBarAccessory={
         <List.Dropdown
-          tooltip="Фильтр по категориям"
+          tooltip="Filter by categories"
           value={selectedCategory}
           onChange={setSelectedCategory}
         >
-          <List.Dropdown.Item key="all" title="Все категории" value="all" icon="📋" />
+          <List.Dropdown.Item key="all" title="All Categories" value="all" icon="📋" />
           {uniqueCategories.map((category) => (
             <List.Dropdown.Item 
               key={category} 
@@ -96,12 +92,6 @@ export default function Command() {
           title={item.command}
           subtitle={item.description}
           icon={getModeIcon(item.mode)}
-          accessories={[
-            { 
-              text: item.mode,
-              icon: getModeIcon(item.mode)
-            }
-          ]}
           keywords={[item.category, ...(item.keywords || [])]}
           detail={
             <List.Item.Detail
@@ -109,18 +99,18 @@ export default function Command() {
 
 ${item.description}
 
-${item.example ? `## Пример использования\n\n${item.example}` : ""}
+${item.example ? `## Example Usage\n\n${item.example}` : ""}
 
-${item.related && item.related.length > 0 ? `## Связанные команды\n\n${item.related.map(cmd => `\`${cmd}\``).join(" • ")}` : ""}`}
+${item.related && item.related.length > 0 ? `## Related Commands\n\n${item.related.map(cmd => `\`${cmd}\``).join(" • ")}` : ""}`}
               metadata={
                 <Detail.Metadata>
                   <Detail.Metadata.Label 
-                    title="Команда" 
+                    title="Command" 
                     text={item.command} 
                     icon="💻"
                   />
                   <Detail.Metadata.Separator />
-                  <Detail.Metadata.TagList title="Режим">
+                  <Detail.Metadata.TagList title="Mode">
                     <Detail.Metadata.TagList.Item 
                       text={item.mode} 
                       color={getModeColor(item.mode)}
@@ -153,37 +143,37 @@ ${item.related && item.related.length > 0 ? `## Связанные команд�
           }
           actions={
             <ActionPanel>
-              <ActionPanel.Section title="Основные действия">
+              <ActionPanel.Section title="Main Actions">
                 <Action.CopyToClipboard
-                  title="Скопировать команду"
+                  title="Copy Command"
                   content={item.command}
                   icon={Icon.Clipboard}
                   shortcut={{ modifiers: ["cmd"], key: "c" }}
                 />
                 <Action.CopyToClipboard
-                  title="Скопировать описание"
+                  title="Copy Description"
                   content={item.description}
                   icon={Icon.Text}
                   shortcut={{ modifiers: ["cmd", "shift"], key: "c" }}
                 />
                 {item.example && (
                   <Action.CopyToClipboard
-                    title="Скопировать пример"
+                    title="Copy Example"
                     content={item.example}
                     icon={Icon.Document}
                     shortcut={{ modifiers: ["cmd", "opt"], key: "c" }}
                   />
                 )}
               </ActionPanel.Section>
-              <ActionPanel.Section title="Дополнительно">
+              <ActionPanel.Section title="Additional">
                 <Action.CopyToClipboard
-                  title="Скопировать всю информацию"
-                  content={`${item.command} - ${item.description}${item.example ? `\n\nПример: ${item.example}` : ""}${item.related && item.related.length > 0 ? `\n\nСвязанные команды: ${item.related.join(", ")}` : ""}`}
+                  title="Copy All Information"
+                  content={`${item.command} - ${item.description}${item.example ? `\n\nExample: ${item.example}` : ""}${item.related && item.related.length > 0 ? `\n\nRelated Commands: ${item.related.join(", ")}` : ""}`}
                   icon={Icon.Duplicate}
                 />
                 {item.related && item.related.length > 0 && (
                   <Action.CopyToClipboard
-                    title="Скопировать связанные команды"
+                    title="Copy Related Commands"
                     content={item.related.join(", ")}
                     icon={Icon.Link}
                   />

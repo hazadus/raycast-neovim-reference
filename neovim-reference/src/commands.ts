@@ -1,8 +1,8 @@
 export interface NeovimCommand {
   command: string;
   description: string;
-  mode: "Normal" | "Insert" | "Visual" | "Command-line";
-  category: "Navigation" | "Editing" | "Search" | "Windows" | "Files" | "Text Objects" | "Miscellaneous";
+  mode: "Normal" | "Insert" | "Visual" | "Cmdline";
+  category: "Navigation" | "Editing" | "Search" | "Windows" | "Files" | "Text Objects" | "Misc";
   keywords?: string[]; // Дополнительные ключевые слова для поиска
   example?: string;
   related?: string[];
@@ -292,7 +292,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":%s/old/new/g",
     description: "Replace all occurrences of 'old' with 'new' in entire file",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Search",
     keywords: ["substitute", "replace", "find", "global"],
     example: "Type `:%s/foo/bar/g` to replace all 'foo' with 'bar' in the entire file.",
@@ -301,7 +301,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":s/old/new/",
     description: "Replace first occurrence in current line",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Search",
     keywords: ["substitute", "replace", "line"],
     example: "Type `:s/foo/bar/` to replace the first 'foo' with 'bar' in the current line.",
@@ -312,7 +312,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":w",
     description: "Save file",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Files",
     keywords: ["save", "write"],
     example: "Type `:w` to save the current file.",
@@ -321,7 +321,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":q",
     description: "Quit Neovim",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Files",
     keywords: ["quit", "exit"],
     example: "Type `:q` to quit Neovim (if no unsaved changes).",
@@ -330,7 +330,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":wq",
     description: "Save and quit",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Files",
     keywords: ["save", "quit", "exit"],
     example: "Type `:wq` to save the file and quit Neovim.",
@@ -339,7 +339,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":q!",
     description: "Quit without saving changes",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Files",
     keywords: ["quit", "force", "discard"],
     example: "Type `:q!` to quit Neovim without saving changes.",
@@ -350,7 +350,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":split",
     description: "Split window horizontally",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Windows",
     keywords: ["split", "horizontal", "window"],
     example: "Type `:split` to split the current window horizontally.",
@@ -359,7 +359,7 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":vsplit",
     description: "Split window vertically",
-    mode: "Command-line",
+    mode: "Cmdline",
     category: "Windows",
     keywords: ["split", "vertical", "window"],
     example: "Type `:vsplit` to split the current window vertically.",
@@ -400,7 +400,7 @@ export const nvimCommands: NeovimCommand[] = [
     command: ".",
     description: "Repeat last command",
     mode: "Normal",
-    category: "Miscellaneous",
+    category: "Misc",
     keywords: ["repeat", "last", "command"],
     example: "Press `.` to repeat the last executed command.",
     related: ["u", "Ctrl-r"],
@@ -408,8 +408,8 @@ export const nvimCommands: NeovimCommand[] = [
   {
     command: ":help",
     description: "Open help",
-    mode: "Command-line",
-    category: "Miscellaneous",
+    mode: "Cmdline",
+    category: "Misc",
     keywords: ["help", "documentation"],
     example: "Type `:help` to open Neovim's built-in help.",
     related: [":help command", ":h"],
