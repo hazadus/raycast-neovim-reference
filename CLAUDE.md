@@ -23,6 +23,7 @@ The project follows a modular structure for organizing Neovim commands:
   - `src/commands/visual.ts` - Visual mode commands
   - `src/commands/cmdline.ts` - Command-line mode commands
 - **Data Aggregation**: `src/commands/index.ts` combines all command arrays
+- **Usage Stats**: `src/use-usage-stats.ts` - `useUsageStats` hook and `usageKey()`; per-command counters in Raycast `LocalStorage`, keyed by `mode:command`
 - **Type Definitions**: `src/types.ts` defines the `NeovimCommand` interface
 
 ### Command Structure
@@ -92,3 +93,10 @@ The extension automatically includes all commands from the mode files through th
 - **Category Icons**: Emojis representing different command categories
 - **Detail View**: Expanded information with metadata, examples, and related commands
 - **Copy Actions**: Multiple clipboard options for commands, descriptions, and examples
+- **Usage Stats**: Counters increment implicitly via `onCopy` (Copy Command, Copy Example, Copy All Information) and explicitly via "Mark as Used" (`⌘U`); "Frequently Used" section (top 10) is shown only when the search text is empty; "Export Cheat Sheet (Markdown)" (`⌘⇧E`) copies the top 30 grouped by mode
+
+### Usage Stats Notes
+
+- The counter key is `mode:command`, so renaming a command in `src/commands/` resets its counter.
+- `List` uses `onSearchTextChange` to hide "Frequently Used" during search, so it must keep the `filtering` prop; otherwise Raycast's built-in filtering is disabled.
+- When adding a new action that should count as usage, call `increment(item)` from `onCopy`/`onAction`.
