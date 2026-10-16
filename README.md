@@ -1,152 +1,167 @@
-# Neovim Reference for Raycast
-
-A comprehensive quick reference for **LazyVim** - the modern Neovim distribution. This Raycast extension provides instant access to 280+ carefully curated commands, keybindings, and workflows for both standard Neovim and LazyVim-specific features.
+# Neovim Reference для Raycast
 
 [![Raycast Extension](https://img.shields.io/badge/Raycast-Extension-red?style=flat&logo=raycast)](https://raycast.com/)
 [![LazyVim](https://img.shields.io/badge/LazyVim-Reference-blue?style=flat)](https://lazyvim.org/)
 [![Neovim](https://img.shields.io/badge/Neovim-0.9+-green?style=flat&logo=neovim)](https://neovim.io/)
 
-![Extension Screenshot](./docs/screenshot.png)
+Быстрая справка по командам **LazyVim** — дистрибутиву Neovim с предустановленным набором дополнений и настроек.
 
-## Features
+Расширение Raycast даёт мгновенный доступ к отобранным командам, сочетаниям клавиш и рабочим сценариям как для обычного Neovim, так и для возможностей, специфичных для LazyVim. Это позволяет искать нужные команды с минимальным отвлечением от кода, пока вы не выучите нужные наизусть 😇.
 
-### **Comprehensive Command Coverage**
-- **280+ commands** across all Neovim modes
-- **LazyVim-specific keybindings** and workflows
-- **LSP integration** commands for modern development
-- **Git workflow** commands with Lazygit integration
+**Обратите внимание**: справка заточена под [мою конфигурацию LazyVim](https://github.com/hazadus/nvim-config). В зависимости от вашей конфигурации и установленных дополнений, команды могут отличаться. В таком случае стоит сделать форк и поправить список команд под свои настройки LazyVim/Neovim.
 
-### **Four Editor Modes Supported**
-- 🟢 **Normal Mode** (147 commands) - Navigation, editing, text objects
-- 🔵 **Insert Mode** (20 commands) - Text input, completion, navigation
-- 🟡 **Visual Mode** (30 commands) - Selection, manipulation, block editing
-- 🔴 **Command-line Mode** (59 commands) - Ex commands, file operations, configuration
+В связи со специфичностью настроек Neovim для каждого пользователя, публикация расширения в сторе Raycast не планируется. Ставьте локально и дополняйте под свои нужды!
 
-### **11 Organized Categories**
-| Category | Commands | Description |
-|----------|----------|-------------|
-| 📁 **Files** | 19 | File operations, buffers, sessions |
-| 🧭 **Navigation** | 53 | Movement, jumps, marks, scrolling |
-| ✏️ **Editing** | 84 | Text manipulation, indentation, folding |
-| 🔍 **Search** | 16 | Find, replace, grep, patterns |
-| 🪟 **Windows** | 18 | Splits, tabs, layout management |
-| 📝 **Text Objects** | 12 | Word, paragraph, bracket operations |
-| 🔧 **LSP** | 14 | Language server, diagnostics, code actions |
-| 🌿 **Git** | 9 | Version control, hunks, Lazygit |
-| 💻 **Terminal** | 4 | Terminal integration, shell commands |
-| 🚀 **LazyVim** | 15 | LazyVim-specific features and shortcuts |
-| ⚙️ **Misc** | 12 | Macros, spell check, configuration |
+![Скриншот расширения](./docs/screenshot.png)
 
-### **Search & Filtering**
-- **Real-time search** across commands, descriptions, and keywords
-- **Mode filtering** - Focus on specific editor modes
-- **Category filtering** - Browse by command type
-- **Keyword matching** - Find commands by functionality
+## Возможности
 
-### **Command Details**
-- **Clear descriptions** for every command
-- **Practical examples** showing usage
-- **Related commands** for discovery
-- **Mode indicators** with color coding
-- **Category icons** for visual organization
+### **Поиск и фильтрация**
 
-## Installation
+Вся суть расширения – как можно быстрее найти нужную команду с минимальным отвлечением от работы.
 
-### Prerequisites
-- [Raycast](https://raycast.com/) installed on macOS
+- **Поиск в реальном времени** по командам, описаниям и ключевым словам
+- **Фильтр по категории** — просмотр по типу команд
+- **Поиск по ключевым словам** — команды находятся по назначению
 
-### Install from Source
+### **Информация о команде**
+
+- **Описание** для каждой команды
+- **Примеры** использования
+- **Связанные команды** для дальнейшего изучения
+- **Индикаторы режима** с цветовой маркировкой
+- **Иконки категорий** для наглядности
+
+### **Разделение по режимам редактора**
+
+В Neovim действие команд отличается в зависимости от включенного режима.
+
+- 🟢 **Normal** — навигация, редактирование, текстовые объекты
+- 🔵 **Insert** — ввод текста, автодополнение, навигация
+- 🟡 **Visual** — выделение, преобразование, блочное редактирование
+- 🔴 **Command-line** — Ex-команды, операции с файлами, конфигурация
+
+### **Категории команд**
+
+Для наглядности, команды разбиты на категории с соответстующими эмоджи.
+
+| Категория | Описание |
+|-----------|----------|
+| 📁 **Files** | Операции с файлами, буферы, сессии |
+| 🧭 **Navigation** | Перемещение, прыжки, метки, прокрутка |
+| ✏️ **Editing** | Работа с текстом, отступы, фолдинг |
+| 🔍 **Search** | Поиск, замена, grep, шаблоны |
+| 🪟 **Windows** | Разделение окон, вкладки, раскладка |
+| 📝 **Text Objects** | Операции со словами, абзацами, скобками |
+| 🔧 **LSP** | Языковой сервер, диагностика, code actions |
+| 🌿 **Git** | Контроль версий, hunks, Lazygit |
+| 💻 **Terminal** | Интеграция терминала, команды оболочки |
+| 🚀 **LazyVim** | Возможности и сочетания клавиш LazyVim |
+| ⚙️ **Misc** | Макросы, проверка орфографии, конфигурация |
+
+## Установка
+
+### Требования
+
+- Установленный [Raycast](https://raycast.com/) на macOS
+
+### Установка из исходников
+
 ```bash
-# Clone the repository
+# Клонировать репозиторий
 git clone https://github.com/hazadus/raycast-neovim-reference.git
 cd raycast-neovim-reference
 
-# Build the extension
+# Собрать расширение
 cd neovim-reference
 npm install && npm run build
 
-# Import into Raycast
-# Use "Import Extension" command in Raycast and select the project folder
+# Импорт в Raycast
+# Выполните команду "Import Extension" в Raycast и выберите папку проекта
 ```
 
-## Usage
+## Использование
 
-### Quick Access
-1. Open Raycast (`⌘ + Space`)
-2. Type "Neovim Reference" or "nv"
-3. Browse or search for commands
+### Быстрый доступ
+1. Откройте Raycast (`⌘ + Space` по умолчанию)
+2. Введите "Neovim Reference" или "nv"
+3. Просматривайте или ищите команды
 
-### Search Tips
-- **Search by command**: Type the actual keybinding (e.g., "gd", "Ctrl-w")
-- **Search by function**: Type what you want to do (e.g., "delete word", "split window")
-- **Filter by mode**: Use the mode dropdown to focus on specific modes
-- **Filter by category**: Use category dropdown to browse by functionality
+### Советы по поиску
+- **По команде**: введите сочетание клавиш (например, "gd", "Ctrl-w")
+- **По действию**: опишите, что нужно сделать (например, "delete word", "split window")
+- **По категории**: выберите категорию в выпадающем списке
 
-## Development
+## Разработка
 
-### Project Structure
+### Структура проекта
 ```
 neovim-reference/
 ├── src/
-│   ├── commands/          # Command definitions by mode
-│   │   ├── normal.ts      # Normal mode commands
-│   │   ├── insert.ts      # Insert mode commands
-│   │   ├── visual.ts      # Visual mode commands
-│   │   ├── cmdline.ts     # Command-line mode commands
-│   │   └── index.ts       # Command aggregation
-│   ├── types.ts           # TypeScript interfaces
-│   └── neovim-reference.tsx # Main extension component
-├── assets/                # Extension icon
-└── package.json           # Extension configuration
+│   ├── commands/            # Команды, сгруппированные по режимам
+│   │   ├── normal.ts        # Команды режима Normal
+│   │   ├── insert.ts        # Команды режима Insert
+│   │   ├── visual.ts        # Команды режима Visual
+│   │   ├── cmdline.ts       # Команды режима Command-line
+│   │   └── index.ts         # Объединение всех команд
+│   ├── types.ts             # Интерфейсы TypeScript
+│   └── neovim-reference.tsx # Главный компонент расширения
+├── assets/                  # Иконка расширения
+└── package.json             # Конфигурация расширения
 ```
 
-### Building
+### Сборка
+
+Команды выполняются из директории `./neovim-reference/`.
+
 ```bash
-# Development mode with hot reload
+# Режим разработки с горячей перезагрузкой
 npm run dev
 
-# Build for production
+# Сборка для production
 npm run build
 
-# Lint and format code
+# Линтинг и форматирование
 npm run lint
 npm run fix-lint
 ```
 
-### Adding New Commands
-1. Edit the appropriate mode file in `src/commands/`
-2. Follow the `NeovimCommand` interface structure
-3. Include description, example, keywords, and related commands
-4. Run `npm run build` to test
+### Добавление команд
 
-### Contributing
-1. Fork the repository
-2. Create a feature branch
-3. Add your commands with proper documentation
-4. Test the extension in Raycast
-5. Submit a pull request
+1. Отредактируйте файл нужного режима в `src/commands/`
+2. Следуйте структуре интерфейса `NeovimCommand`
+3. Укажите описание, пример, ключевые слова и связанные команды
+4. Запустите `npm run build` для проверки
 
-## Technology Stack
+### Участие в разработке
 
-- **Framework**: [Raycast API](https://developers.raycast.com/)
-- **Language**: TypeScript
-- **UI**: React with Raycast components
-- **Build**: Node.js, npm
-- **Linting**: ESLint, Prettier
+1. Сделайте форк репозитория
+2. Создайте ветку для изменений
+3. Добавьте команды с описаниями
+4. Проверьте расширение в Raycast
+5. Отправьте pull request
 
-## Sources & Credits
+## Технологии
 
-This extension is based on commands and workflows from:
+- **Фреймворк**: [Raycast API](https://developers.raycast.com/)
+- **Язык**: TypeScript
+- **UI**: React с компонентами Raycast
+- **Сборка**: Node.js, npm
+- **Линтинг**: ESLint, Prettier
 
-- **[LazyVim For Ambitious Developers Book](https://lazyvim-ambitious-devs.phillips.codes/)** - Comprehensive LazyVim tutorial
-- **[LazyVim Documentation](https://lazyvim.org/)** - Modern Neovim configuration
-- **[Neovim Documentation](https://neovim.io/)** - Core Neovim functionality
+## Источники
 
-## Links
+Расширение основано на командах и сценариях из:
 
-- [Raycast Store](https://raycast.com/store) - Discover more extensions
-- [Raycast Extensions Development Documentation](https://developers.raycast.com/basics/create-your-first-extension)
+- **[LazyVim For Ambitious Developers Book](https://lazyvim-ambitious-devs.phillips.codes/)** — подробное руководство по LazyVim
+- **[Документация LazyVim](https://lazyvim.org/)** — современная конфигурация Neovim
+- **[Документация Neovim](https://neovim.io/)** — основные возможности Neovim
 
-## License
+## Ссылки
 
-MIT License - feel free to use, modify, and distribute.
+- [Raycast Store](https://raycast.com/store) — другие расширения
+- [Документация по разработке расширений Raycast](https://developers.raycast.com/basics/create-your-first-extension)
+
+## Лицензия
+
+Лицензия MIT — можно свободно использовать, изменять и распространять.
