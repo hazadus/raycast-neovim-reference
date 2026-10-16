@@ -1841,7 +1841,7 @@ export const normalCommands: NeovimCommand[] = [
     mode: "Normal",
     category: "LSP",
     keywords: ["diagnostics", "errors", "trouble", "problems", "list"],
-    example: "Press `<Space>xx` to list all problems in the project; close it with `<Space>wd`.",
+    example: "Press `<Space>xx` to list all problems in the project; activate with `Ctrl-w w`/`Ctrl-w j`; close it with `<Space>wd`.",
     related: ["<Space>cd", "]d", "[d"],
   },
   {
