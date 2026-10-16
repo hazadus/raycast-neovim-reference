@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Detail, Icon, List, showToast, Toast } from "@raycast/api";
+import { Action, ActionPanel, Detail, Icon, List, showHUD } from "@raycast/api";
 import { useMemo, useState } from "react";
 import { nvimCommands } from "./commands";
 import type { NeovimCommand } from "./types";
@@ -102,9 +102,10 @@ export default function Command() {
 
   const cheatSheet = useMemo(() => buildCheatSheet(counts), [counts]);
 
-  const markAsUsed = (item: NeovimCommand) => {
-    increment(item);
-    showToast({ style: Toast.Style.Success, title: "Marked as used", message: item.command });
+  // Как и копирование, закрывает окно Raycast и показывает HUD
+  const markAsUsed = async (item: NeovimCommand) => {
+    await increment(item);
+    await showHUD(`Marked as used: ${item.command}`);
   };
 
   const renderItem = (item: NeovimCommand) => {
@@ -154,6 +155,13 @@ ${item.related && item.related.length > 0 ? `## Related Commands\n\n${item.relat
         actions={
           <ActionPanel>
             <ActionPanel.Section title="Main Actions">
+              {/* Первое действие срабатывает по Enter: только увеличивает счётчик, без копирования, и закрывает окно */}
+              <Action
+                title="Mark as Used"
+                icon={Icon.PlusCircle}
+                shortcut={{ modifiers: ["cmd"], key: "u" }}
+                onAction={() => markAsUsed(item)}
+              />
               <Action.CopyToClipboard
                 title="Copy Command"
                 content={item.command}
@@ -178,12 +186,6 @@ ${item.related && item.related.length > 0 ? `## Related Commands\n\n${item.relat
               )}
             </ActionPanel.Section>
             <ActionPanel.Section title="Usage Stats">
-              <Action
-                title="Mark as Used"
-                icon={Icon.PlusCircle}
-                shortcut={{ modifiers: ["cmd"], key: "u" }}
-                onAction={() => markAsUsed(item)}
-              />
               <Action.CopyToClipboard
                 title="Export Cheat Sheet (Markdown)"
                 content={cheatSheet}

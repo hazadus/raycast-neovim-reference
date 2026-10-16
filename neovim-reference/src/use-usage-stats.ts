@@ -38,7 +38,8 @@ export function useUsageStats() {
     const next = { ...countsRef.current, [key]: (countsRef.current[key] ?? 0) + 1 };
     countsRef.current = next;
     setCounts(next);
-    LocalStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    // Промис нужен, чтобы дождаться записи перед закрытием окна
+    return LocalStorage.setItem(STORAGE_KEY, JSON.stringify(next));
   }, []);
 
   return { counts, increment };

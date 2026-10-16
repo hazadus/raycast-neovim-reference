@@ -93,7 +93,7 @@ The extension automatically includes all commands from the mode files through th
 - **Category Icons**: Emojis representing different command categories
 - **Detail View**: Expanded information with metadata, examples, and related commands
 - **Copy Actions**: Multiple clipboard options for commands, descriptions, and examples
-- **Usage Stats**: Counters increment implicitly via `onCopy` (Copy Command, Copy Example, Copy All Information) and explicitly via "Mark as Used" (`⌘U`); "Frequently Used" section (top 10) is shown only when the search text is empty; "Export Cheat Sheet (Markdown)" (`⌘⇧E`) copies the top 30 grouped by mode
+- **Usage Stats**: Counters increment implicitly via `onCopy` (Copy Command, Copy Example, Copy All Information) and explicitly via "Mark as Used" — the primary action (`Enter`, also `⌘U`), which does not copy anything and closes the Raycast window via `showHUD` after the counter is saved; "Frequently Used" section (top 10) is shown only when the search text is empty; "Export Cheat Sheet (Markdown)" (`⌘⇧E`) copies the top 30 grouped by mode
 
 ### Usage Stats Notes
 
