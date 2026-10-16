@@ -105,11 +105,11 @@ ${item.related && item.related.length > 0 ? `## Related Commands\n\n${item.relat
                     />
                   </Detail.Metadata.TagList>
                   <Detail.Metadata.Separator />
-                  <Detail.Metadata.Label title="Категория" text={item.category} icon={getCategoryIcon(item.category)} />
+                  <Detail.Metadata.Label title="Category" text={item.category} icon={getCategoryIcon(item.category)} />
                   {item.keywords && item.keywords.length > 0 && (
                     <>
                       <Detail.Metadata.Separator />
-                      <Detail.Metadata.TagList title="Теги">
+                      <Detail.Metadata.TagList title="Tags">
                         {item.keywords.slice(0, 5).map((keyword) => (
                           <Detail.Metadata.TagList.Item key={keyword} text={keyword} color="#6B7280" />
                         ))}

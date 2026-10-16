@@ -292,4 +292,42 @@ export const visualCommands: NeovimCommand[] = [
     example: "In block Visual mode, press `A` to append at the end of each selected line.",
     related: ["I", "c", "s"],
   },
+
+  // MARK: Notes — Visual
+  {
+    command: '"+y',
+    description: "Yank selection to system clipboard",
+    mode: "Visual",
+    category: "Editing",
+    keywords: ["yank", "copy", "clipboard", "system"],
+    example: 'Select text and press `"+y` to copy it to the system clipboard.',
+    related: ["y", 'vip"+y'],
+  },
+  {
+    command: "vip",
+    description: "Select paragraph",
+    mode: "Visual",
+    category: "Text Objects",
+    keywords: ["paragraph", "select", "block"],
+    example: 'From Normal mode press `vip` to select the paragraph under cursor; `vip"+y` copies it to the clipboard.',
+    related: ["ip", 'vip"+y'],
+  },
+  {
+    command: ":'<,'>!jq .",
+    description: "Format selected JSON with jq",
+    mode: "Visual",
+    category: "Misc",
+    keywords: ["jq", "json", "format", "filter"],
+    example: "Select JSON, press `:` (gives `:'<,'>`), then type `!jq .` and Enter. Use `jq -c .` to minify.",
+    related: [":!command"],
+  },
+  {
+    command: ":'<,'>s/old/new/g",
+    description: "Substitute within selection",
+    mode: "Visual",
+    category: "Editing",
+    keywords: ["replace", "substitute", "selection", "range"],
+    example: "Select lines with `V`, press `:` and complete as `s/old/new/g`.",
+    related: [":%s/old/new/g"],
+  },
 ];
